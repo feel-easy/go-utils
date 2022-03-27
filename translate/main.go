@@ -16,8 +16,8 @@ func main() {
 
 	if _, ok := keys[1]; !ok {
 		fmt.Println("USEAGE: ")
-		fmt.Println("\t- $ yd 词/句 [是否读出来]")
-		fmt.Println("\t- $ yd golang 1 /* 试一下 */")
+		fmt.Println("\t- $ yd 词/句")
+		fmt.Println("\t- $ yd hello  /* 试一下 */")
 		return
 	}
 	opts := ydfanyi.NewOptions("", "", "")
