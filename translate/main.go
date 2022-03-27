@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/exec"
 
 	ydfanyi "github.com/hnmaonanbei/go-youdao-fanyi"
 )
@@ -16,8 +17,8 @@ func main() {
 
 	if _, ok := keys[1]; !ok {
 		fmt.Println("USEAGE: ")
-		fmt.Println("\t- $ yd 词/句")
-		fmt.Println("\t- $ yd hello  /* 试一下 */")
+		fmt.Println("\t- $ yd 词/句 [是否读出来]")
+		fmt.Println("\t- $ yd hello 1 /* 试一下 */")
 		return
 	}
 	opts := ydfanyi.NewOptions("", "", "")
@@ -36,5 +37,11 @@ func main() {
 	//	[ int. 喂；哈罗，你好，您好（表示问候， 惊奇或唤起注意时的用语）
 	//	n. （Hello）（法）埃洛（人名）
 	//]
+	if _, ok := keys[2]; ok {
+		cmd := exec.Command("say", input)
+		if err := cmd.Run(); err != nil {
+			fmt.Println("出错啦：不好意思，我不知道怎么读")
+		}
+	}
 
 }
