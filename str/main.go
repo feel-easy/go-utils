@@ -48,10 +48,10 @@ func camelString(s string) string {
 	num := len(s) - 1
 	for i := 0; i <= num; i++ {
 		d := s[i]
-		if k == false && d >= 'A' && d <= 'Z' {
+		if !k && d >= 'A' && d <= 'Z' {
 			k = true
 		}
-		if d >= 'a' && d <= 'z' && (j || k == false) {
+		if d >= 'a' && d <= 'z' && (j || !k) {
 			d = d - 32
 			j = false
 			k = true
@@ -68,7 +68,7 @@ func camelString(s string) string {
 func main() {
 	keys := make(map[int]bool)
 
-	for k, _ := range os.Args {
+	for k := range os.Args {
 		keys[k] = true
 	}
 
